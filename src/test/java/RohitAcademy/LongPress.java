@@ -15,7 +15,7 @@ public void longPressTest() {
 	getElementByAccessibilityID("1. Custom Adapter").click();
 	String xpath="//android.widget.TextView[@text='People Names']";
 	((JavascriptExecutor)driver).executeScript("mobile: longClickGesture", ImmutableMap.of("elementId",((RemoteWebElement)getElementByXpath(xpath)).getId(), "duration", 2000));        
-	String expText=getElementByXpath("//android.widget.TextView[@text=''Sample menu]").getText();
+	String expText=getElementByXpath("//android.widget.TextView[@text='Sample menu']").getText();
 	Assert.assertEquals("Sample menu", expText);
 }
 
