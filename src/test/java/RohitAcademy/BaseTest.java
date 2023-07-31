@@ -5,9 +5,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -32,11 +36,11 @@ public void configureAppium() throws MalformedURLException {
 			
 
 }
-@AfterClass
-public void tearDown() {
-	driver.quit();
-	service.stop();
-}
+//@AfterClass
+//public void tearDown() {
+//	driver.quit();
+//	service.stop();
+//}
 
 public WebElement getElementByXpath(String s) {
 	return driver.findElement(By.xpath(s));
@@ -50,5 +54,23 @@ public WebElement getElementBynClassName(String s) {
 public WebElement getElementByAccessibilityID(String s) {
 	return driver.findElement(AppiumBy.accessibilityId(s));
 }
-
+public void swipeAction(WebElement ele, String direction) {
+	 ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture",ImmutableMap.of(
+	    		"elementId", ((RemoteWebElement)ele).getId(),
+	    		"direction",direction,
+	    		"percent", 0.75
+	    		));
 }
+public void dragAndDrop(WebElement ele, int x, int y) {
+	((JavascriptExecutor) driver).executeScript("mobile: dragGesture",ImmutableMap.of(
+			"elementId", ((RemoteWebElement)ele).getId(),
+			"endX",x,
+			"endY",y
+			));
+}
+public void scroll() {
+driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));"));
+}
+}
+
+
