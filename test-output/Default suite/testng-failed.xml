@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="RohitAcademy.LongPress">
+      <class name="RohitAcademy.ActivityTest">
         <methods>
           <include name="configureAppium"/>
-          <include name="longPressTest"/>
-          <include name="tearDown"/>
+          <include name="landscapeTest"/>
         </methods>
-      </class> <!-- RohitAcademy.LongPress -->
+      </class> <!-- RohitAcademy.ActivityTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
